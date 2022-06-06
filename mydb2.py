@@ -110,19 +110,46 @@ class Db:
         the_in="SELECT * FROM login WHERE username = "+"'"+str(username)+"'" +"AND password = "+"'"+str(password)+"'"
         
         connection.execute(the_in)
-# 
-        result=connection.fetchall()
 
-        
-        print (result)
+        result=connection.fetchall()
+  
 
         if result:
             return True
         else:
             return False
 
+    def update_pass(self,username,email,up_pass):
+    
+        db = self.db_connect()
+        connection = db.cursor()
+
+        # the_in="UPDATE login SET password="+"'"+str(up_pass)+"'"+ "WHERE username = "+"'"+str(username)+"'" +"AND email= "+"'"+str(email)+"'"
+        the_in="UPDATE login SET password="+"'"+up_pass+"'"+ "WHERE username="+"'"+username+"'" +"AND email ="+"'"+email+"'"
+        connection.execute(the_in)
+       
+       
+        db.commit() 
+
+    def valid_user(self,username,email) :
+
+        db = self.db_connect()
+        connection = db.cursor()
+
+        the_in="SELECT * FROM login WHERE username = "+"'"+str(username)+"'" +"AND email = "+"'"+str(email)+"'"
         
+        connection.execute(the_in)
+
+        result=connection.fetchall()
+
+        #print (result)
+
+        if result:
+            return True
+        else:
+            return False 
 
 db = Db()
 # db.insert_data(("email","username","password"),('nid03@hotmail.com','Bia','passrd'))
 # db.insert_data()
+db.update_pass("sun","s@s.com","newpass")

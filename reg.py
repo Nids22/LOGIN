@@ -57,10 +57,5 @@ class Reg:
          s_tuple=(email,username,password)
             
          self.newClass.insert_data(("email","username","password"),s_tuple)
-
-
-          
-
-# new_user = Reg()           
-
-
+         
+# new_user = Reg()
