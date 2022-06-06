@@ -119,19 +119,37 @@ class Db:
         else:
             return False
 
-    # def update_pass(self,username,email,up_pass):
+    def update_pass(self,username,email,up_pass):
     
-    #     db = self.db_connect()
-    #     connection = db.cursor()
+        db = self.db_connect()
+        connection = db.cursor()
 
-    #     the_in="UPDATE login SET password="+str(up_pass)+ "WHERE username = "+"'"+str(username)+"'" +"AND email= "+"'"+str(email)+"'"
+        # the_in="UPDATE login SET password="+"'"+str(up_pass)+"'"+ "WHERE username = "+"'"+str(username)+"'" +"AND email= "+"'"+str(email)+"'"
+        the_in="UPDATE login SET password="+"'"+up_pass+"'"+ "WHERE username="+"'"+username+"'" +"AND email ="+"'"+email+"'"
+        connection.execute(the_in)
        
-    #     connection.execute(the_in)
        
-       
-    #     self.db_connect.commit()      
+        db.commit() 
+
+    def valid_user(self,username,email) :
+
+        db = self.db_connect()
+        connection = db.cursor()
+
+        the_in="SELECT * FROM login WHERE username = "+"'"+str(username)+"'" +"AND email = "+"'"+str(email)+"'"
+        
+        connection.execute(the_in)
+
+        result=connection.fetchall()
+
+        #print (result)
+
+        if result:
+            return True
+        else:
+            return False 
 
 db = Db()
 # db.insert_data(("email","username","password"),('nid03@hotmail.com','Bia','passrd'))
 # db.insert_data()
-# db.update_pass("sun","s@s.com","newpass")
+db.update_pass("sun","s@s.com","newpass")

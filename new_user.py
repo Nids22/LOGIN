@@ -90,12 +90,7 @@ class NewUser:
                             re_pass=maskpass.askpass(prompt="Please re-enter the passsword : ")
                             # re_pass = input("Please re-enter the passsword : ") 
 
-            # bytePwd = password.encode('utf-8')
-            # mySalt = bcrypt.gensalt()
-
-            # # Hash password
-            # hash = bcrypt.hashpw(bytePwd, mySalt) 
-            # print(bcrypt.checkpw(password, hash))
+        
 
             passw = password.encode("utf-8")
 
