@@ -7,7 +7,7 @@ import mysql.connector
 class Db:
     local_host="localhost"
     user_name="root"
-    pass_word="Neelesh220303"
+    pass_word="**************"
     database="mydbs"
 
 
